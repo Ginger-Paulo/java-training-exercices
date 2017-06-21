@@ -1,5 +1,6 @@
 package io.robusta.hand.solution;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ import io.robusta.hand.interfaces.IHand;
 import io.robusta.hand.interfaces.IHandResolver;
 
 public class Hand extends TreeSet<Card> implements IHand {
+	
+
 
 
     private static final long serialVersionUID = 7824823998655881611L;
@@ -23,7 +26,8 @@ public class Hand extends TreeSet<Card> implements IHand {
         // For exemple remove three cards from this hand
         // , and get 3 new ones from the Deck
         // returns the new given cards
-        return null;
+    	remove (cards.size());
+        return cards;
     }
 
 
@@ -51,8 +55,17 @@ public class Hand extends TreeSet<Card> implements IHand {
 
     @Override
     public boolean isStraight() {
-
-        return false;
+    	
+    	Card previous = null;// La carte précédente est nulle, vu que nous n'en possédons pas
+    	for (Card current : this){// Début de la lecture des cartes
+    		if (previous != null){
+    			previous = current;
+    			
+    		}
+    	}
+    	
+    	
+		return false;
     }
 
     @Override

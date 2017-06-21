@@ -21,8 +21,9 @@ public class Deck extends LinkedList<Card> implements IDeck{
 	@Override
 	public Card pick() {
 		// shuffle;
+		Collections.shuffle(this);//Utilisation du this pour dire le deck
 		// remove card from deck and returns it
-		return null;
+		return this.removeFirst();
 	}
 
 
@@ -30,14 +31,23 @@ public class Deck extends LinkedList<Card> implements IDeck{
 
 	@Override
 	public TreeSet<Card> pick(int number) {
-		// reuse pick()
-		return null;
+		TreeSet<Card> treeSet = new TreeSet<>();//On crée la main
+		
+		// reuse pick(), pour cela un fait une boucle de la fonction pick
+		for(int i= 1; i<= number;i++){
+			treeSet.add(pick());//pour treeSet on fait plusieurs fois la fonction pick
+		}
+		return treeSet;//on retourne treeSet
 	}
 
 	@Override
 	public Hand giveHand() {
 		// A hand is a **5** card TreeSet
-		return null;
+		Hand hand = new Hand();//Création de la main
+		hand.addAll(pick(5));//Puis on ajoute à la main plusieurs cartes (d'où le addAll), issu de la fonction pick et 5 pour le nombre de fois où la fonction est faite
+		
+		
+		return hand;
 	}
 	
 	
